@@ -127,7 +127,19 @@ class Game:
             return (0, 0, 0)
 
         '''
-        TYPE THE CODE HERE BY REFERRING TO THE BELOW EXPLANATION.
+        for i in range(3):
+            for j in range(3):
+                if self.current_state[i][j] == '.':
+                    self.current_state[i][j] = 'X'  # Simulate player's move
+                    (m, max_i, max_j) = self.max()  # Call max() to evaluate
+                    if m < minv:
+                        minv = m
+                        qx = i
+                        qy = j
+                    self.current_state[i][j] = '.'  # Undo the move
+
+        return (minv, qx, qy)
+        
         Nested Loops (for i in range(0, 3), for j in range(0, 3)):
 
 These loops iterate over all the cells of the 3x3 Tic-Tac-Toe board (current_state), checking each cell's position (i, j).
